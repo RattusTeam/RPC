@@ -34,7 +34,7 @@ Now no one will be able to connect to your RPC.
 
 **How to check the full list of accesses:**
 
-```
+```console
 iptables -L DOCKER-USER -n --line-numbers
 ```
 
@@ -42,7 +42,7 @@ iptables -L DOCKER-USER -n --line-numbers
 
 Please note that new addresses must be added to the beginning of the list (before DROP). To do this, use parameter 1 in the command.
 
-```
+```console
 iptables -I DOCKER-USER 1 -s X.X.X.X -p tcp --dport 8545 -j ACCEPT
 iptables -I DOCKER-USER 1 -s X.X.X.X -p tcp --dport 3500 -j ACCEPT
 ```
