@@ -29,3 +29,20 @@ netfilter-persistent save
 ```
 
 Now no one will be able to connect to your RPC.
+
+## Useful commands
+
+**How to check the full list of accesses:**
+
+```
+iptables -L DOCKER-USER -n --line-numbers
+```
+
+**How to add a new address to the whitelist:**
+
+Please note that new addresses must be added to the beginning of the list (before DROP). To do this, use parameter 1 in the command.
+
+```
+iptables -I DOCKER-USER 1 -s X.X.X.X -p tcp --dport 8545 -j ACCEPT
+iptables -I DOCKER-USER 1 -s X.X.X.X -p tcp --dport 3500 -j ACCEPT
+```
