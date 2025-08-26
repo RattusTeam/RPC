@@ -18,3 +18,14 @@ iptables -I DOCKER-USER -s Y.Y.Y.Y -p tcp --dport 3500 -j ACCEPT
 iptables -A DOCKER-USER -p tcp --dport 8545 -j DROP
 iptables -A DOCKER-USER -p tcp --dport 3500 -j DROP
 ```
+
+## Step 2: Save the rules
+
+To ensure that the rules remain in effect after restarting the server, you must save them.
+
+```console
+apt install iptables-persistent
+netfilter-persistent save
+```
+
+Now no one will be able to connect to your RPC.
